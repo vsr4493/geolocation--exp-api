@@ -14,21 +14,7 @@ const DeliveryLocationFeatureSchema = new mongoose.Schema({
   },
 });
 
-/*const DeliveryLocationSchema = new mongoose.Schema({
-  point: mongoose.Schema.Types.Point,
-  multipoint: mongoose.Schema.Types.MultiPoint,
-  linestring: mongoose.Schema.Types.LineString,
-  multilinestring: mongoose.Schema.Types.MultiLineString,
-  polygon: mongoose.Schema.Types.Polygon,
-  multipolygon: mongoose.Schema.Types.MultiPolygon,
-  geometry: mongoose.Schema.Types.Geometry,
-  geometrycollection: mongoose.Schema.Types.GeometryCollection,
-  feature: mongoose.Schema.Types.Feature,
-  featurecollection: mongoose.Schema.Types.FeatureCollection
-});*/
-
-
-// Apparently this improves performance of queries
+// Apparently this improves performance of geolocation-queries
 DeliveryLocationFeatureSchema.index( { "location": "2dsphere"} );
 
 module.exports = mongoose.model("DeliveryLocationFeature", DeliveryLocationFeatureSchema);
